@@ -23,7 +23,7 @@ INNER JOIN TipoEvento ON Evento.IdTipoEvento = TipoEvento.IdTipoEvento
 WHERE AcessoLivre = 1;
 
 --listar todos os eventos que um determinado usuário participa e que está com a situação confirmada
-SELECT NomeFantasia, TituloTipoEvento, NomeEvento, Descricao, DataEvento, AcessoLivre, Nome FROM Presenca
+SELECT NomeFantasia, TituloTipoEvento, NomeEvento, Descricao, DataEvento, AcessoLivre, Nome, Situacao FROM Presenca
 INNER JOIN Evento ON Presenca.IdEvento = Evento.IdEvento
 INNER JOIN Usuario ON Presenca.IdUsuario = Usuario.IdUsuario
 INNER JOIN Instituicao ON Evento.IdInstituicao = Instituicao.IdInstituicao
@@ -40,5 +40,16 @@ END AS AcessoLivre
 FROM Evento
 INNER JOIN Instituicao ON Evento.IdInstituicao = Instituicao.IdInstituicao
 INNER JOIN TipoEvento ON Evento.IdTipoEvento = TipoEvento.IdTipoEvento;
+
+--abreviação
+SELECT
+	U.Nome AS Usuario,
+	TU.TituloTipoUsuario AS Perfil,
+	U.Email,
+	U.DataCadastro,
+	U.Genero
+FROM Usuario U
+INNER JOIN TipoUsuario TU 
+ON U.IdTipoUsuario = TU.IdTipoUsuario;
 
 
